@@ -34,6 +34,7 @@ jobs:
         run: terraform fmt
 
       - name: Terraform Init
+        working-directory: ./Environment/dev
         run: terraform init
 
       - name: Terraform Validate
@@ -48,6 +49,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Terraform Plan
+        working-directory: ./Environment/dev
         run: terraform plan
 
   terraform-apply:
@@ -69,7 +71,9 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Terraform Init
+        working-directory: ./Environment/dev
         run: terraform init
 
       - name: Terraform Apply
+        working-directory: ./Environment/dev
         run: terraform apply -auto-approve
